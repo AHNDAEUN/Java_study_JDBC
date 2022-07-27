@@ -13,6 +13,7 @@ public class CoutriesDAO {
 
 	public void getDeail2(String Country_id) throws Exception {
 		
+		CountriesDTO countriesDTO = new CountriesDTO();
 		
 		Connection con = DBconnector.getConnection();
 		
@@ -25,7 +26,7 @@ public class CoutriesDAO {
 		 
 			ResultSet rs =st.executeQuery();
 
-			while (rs.next()) {
+			if (rs.next()) {
 				
 				
 				String id = rs.getString("Country_id");  // 인덱스 번호나 컬럼명을 꺼내 올 수 있음 

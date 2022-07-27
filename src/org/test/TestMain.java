@@ -49,7 +49,7 @@ public class TestMain {
 		RegionsDTO regionsDTO =regionsDAO.getDegail(1);
 		regionsView.view(regionsDTO);
 	
-			coutriesDAO.getDegail2("AU");
+			//coutriesDAO.getDegail2("AU");
 		
 	
 	}

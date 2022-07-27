@@ -3,6 +3,7 @@ package org.regions;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import org.untill.DBconnector;
 
@@ -85,7 +86,7 @@ public class RegionsDAO {
 	
 	//1. Regionsㅣ의 모든 데이터 가져오기 
 	
-	public void getList() throws Exception {
+	public void getList(ArrayList<RegionsDTO> ar  ) throws Exception {
 		
 	Connection con =  DBconnector.getConnection();
 		
@@ -105,7 +106,10 @@ public class RegionsDAO {
 	ResultSet rs = st.executeQuery(); // 최종실행
 	
 	while (rs.next()) {
-		
+		RegionsDTO regionsDTO =new RegionsDTO();
+		regionsDTO.setRegion_id(rs.getInt("Region_ id"));
+		//regionsDTO.setReion_name(rs.s);
+		//ar.
 	int id=	rs.getInt("Region_id"); //컬럼 label => 뽑고 싶은 컬럼명을 문자열로 가져오는 것 
 		String name = rs.getString("Region_name");
 	

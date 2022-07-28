@@ -17,24 +17,20 @@ public class RegionsDTO {
 	
 	
 	private Integer region_id;  // null값이 생략되어 있을수도 있기때문에 레퍼런스값으로 설정하기
-	private String reion_name;
-	
-	
-	
-	
+	private String region_name;
 	public Integer getRegion_id() {
 		return region_id;
 	}
 	public void setRegion_id(Integer region_id) {
 		this.region_id = region_id;
 	}
-	public String getReion_name() {
-		return reion_name;
+	public String getRegion_name() {
+		return region_name;
 	}
-	public void setReion_name(String reion_name) {
-		this.reion_name = reion_name;
+	public void setRegion_name(String region_name) {
+		this.region_name = region_name;
 	}
-	
+
 	
 	
 	

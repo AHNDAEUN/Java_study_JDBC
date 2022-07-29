@@ -9,6 +9,58 @@ import org.untill.DBconnector;
 
 public class EmployeesDAO {
 	
+	public void getJoinTest(EmployeesDTO employeesDTO) throws Exception{
+		
+				// 1. DB연결 
+		
+		Connection con = DBconnector.getConnection();
+		
+				// 2. SQL 작성
+		
+				String sql ="SELECT E.LAST_NAME,E.SALARY ,D.DEPARTMENT_NAME "
+						+ "    FROM EMPLOYEES E "
+						+ "    INNER JOIN "
+						+ "    DEPARTMENTS D "
+						+ "    ON E.DEPARTMENT_ID = D.DEPARTMENT_ID "
+						+ "        WHERE E.EMPLOYEE_ID = ?";
+								// 앞이든 뒤든 한쪽에 띄어쓰기 하기 
+								// 하나의 객체로 만들어 주는 것 Stringbuffer
+				// 3. 미리 보기
+				
+				PreparedStatement st = con.prepareStatement(sql);
+		
+				// 4. ? 있으면 값 세팅
+		
+					st.setInt(1, employeesDTO.getEmployee_id()); // 값을 받아올땐 매개변수로 선언 
+				
+				// 5. 최종전송 후 결과처리
+		ResultSet rs = st.executeQuery();
+		
+		if( rs.next()) {
+			
+			employeesDTO = new EmployeesDTO(); // 새로운 객체로 덮어 씌움 
+
+			employeesDTO.setLast_name(rs.getString("LAST_NAME"));
+			employeesDTO.setSalary(rs.getInt("SALARY"));
+			
+			//DepartmentsDTO dt = new DepartmentsDTO();
+	      //  dt.setDepartment_name(rs.getString(3));
+			
+			
+		}
+		
+		
+		
+				// 6. 연결 해제
+		
+		DBconnector.disConnect(st, con);
+		// 클레스 메서드 
+		
+		
+	}
+	
+	
+	
 	
 	
 	public void getSalaryInfo() throws Exception{
@@ -63,4 +115,3 @@ public class EmployeesDAO {
 	}
 
 }
-
